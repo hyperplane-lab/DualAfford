@@ -32,7 +32,7 @@
 <br>
 <div class = "material">
         <a href="https://arxiv.org/pdf/2207.01971.pdf" target="_blank">[Paper]</a>
-        <a target="_blank">[Code]</a>
+        <a target="_blank">[Code](Coming Soon!)</a>
         <!-- <a href="https://github.com/warshallrho/VAT-Mart" target="_blank">[Code]</a> -->
         <a href="paper.bib" target="_blank">[BibTex]</a>
 </div>
@@ -41,7 +41,7 @@
   Abstract
   </div>
   <p class = "abstractText">
-    It is essential yet challenging for future home-assistant robots to understand and manipulate diverse 3D objects in daily human environments. Towards building scalable systems that can perform diverse manipulation tasks over various 3D shapes, recent works have advocated and demonstrated promising results learning visual actionable affordance, which labels every point over the input 3D geometry with an action likelihood of accomplishing the downstream task (e.g., pushing or picking-up). However, these works only studied single-gripper manipulation tasks, yet many real-world tasks require two hands to achieve collaboratively. In this work, we propose a novel learning framework, DualAfford, to learn collaborative affordance for dual-gripper manipulation tasks. The core design of the approach is to reduce the quadratic problem for two grippers into two disentangled yet inter- connected subtasks for efficient learning. Using the large-scale PartNet-Mobility and ShapeNet datasets, we set up four benchmark tasks for dual-gripper manipula- tion. Experiments prove the effectiveness and superiority of our method over three baselines.
+    It is essential yet challenging for future home-assistant robots to understand and manipulate diverse 3D objects in daily human environments. Towards building scalable systems that can perform diverse manipulation tasks over various 3D shapes, recent works have advocated and demonstrated promising results learning visual actionable affordance, which labels every point over the input 3D geometry with an action likelihood of accomplishing the downstream task (e.g., pushing or picking-up). However, these works only studied single-gripper manipulation tasks, yet many real-world tasks require two hands to achieve collaboratively. In this work, we propose a novel learning framework, DualAfford, to learn collaborative affordance for dual-gripper manipulation tasks. The core design of the approach is to reduce the quadratic problem for two grippers into two disentangled yet inter- connected subtasks for efficient learning. Using the large-scale PartNet-Mobility and ShapeNet datasets, we set up four benchmark tasks for dual-gripper manipulation. Experiments prove the effectiveness and superiority of our method over three baselines.
 </p>
 
 <br>
@@ -50,9 +50,9 @@
 </div>
 <br>
 <center>
-    <iframe width="660" height="415" src="https://www.youtube.com/embed/J0UUE2FvOCE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="660" height="415" src="https://www.youtube.com/embed/3NsnIIrgv0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <br><br><br>
-    <iframe width="660" height="415" src="//player.bilibili.com/player.html?aid=258222312&bvid=BV1Ua411D7Sa&cid=765268475&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+    <iframe width="660" height="415" src="//player.bilibili.com/player.html?aid=258222312&bvid=BV1Ua411D7Sa&cid=974991223&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 </center>
 
 <br>
@@ -65,7 +65,10 @@
   <img class="bannerImage" src="./images/teaser.png" ,="" width="800"><br>
   <table width="800" align="center"><tbody><tr><td><p class="figureTitleText">
         Figure 1.
-        Given different shapes and manipulation tasks (e.g., pushing the keyboard in the direction indicated by the red arrow), our proposed DualAfford framework predicts dual collaborative visual actionable affordance and gripper orientations. The prediction for the second gripper (b) is dependent on the first (a). We can directly apply our network to real-world data.
+        Given different shapes and manipulation tasks (e.g., pushing the keyboard in the direction indicated by the red arrow), 
+        our proposed DualAfford framework predicts dual collaborative visual actionable affordance and gripper orientations. 
+        The prediction for the second gripper (b) is dependent on the first (a). 
+        We can directly apply our network to real-world data.
   </p></td></tr></tbody></table>
 
 <div class="abstractTitle">
@@ -79,7 +82,12 @@
   <img class="bannerImage" src="./images/dual_gripper_teaser.png" ,="" width="800"><br>
   <table width="800" align="center"><tbody><tr><td><p class="figureTitleText">
         Figure 3.
-        Architecture details of the Perception Module. Given a 3D partial scan and a specific task, our network sequentially predicts the first and second grippers' visual affordance and manipulation actions in a conditional manner. Each gripper module is composed of 1) an actionability prediction module A indicating where to interact; 2) an action proposal module P suggesting how to interact; 3) an action scoring module C evaluating the success likelihood of an interaction.
+        Architecture details of the Perception Module. Given a 3D partial scan and a specific select task, 
+        our network sequentially predicts the first and second grippers’ affordance maps and manipulation actions in a conditional manner. 
+        Each gripper module is composed of 
+        1) an Affordance Network A indicating where to interact; 
+        2) a Proposal Network P suggesting how to interact; 
+        3) a Critic Network C evaluating the success likelihood of an interaction.
   </p></td></tr></tbody></table>
 
   
@@ -89,22 +97,38 @@
   <img class="bannerImage" src="./images/aff.png" ,="" width="800"><br>
   <table width="800" align="center"><tbody><tr><td><p class="figureTitleText">
         Figure 4.
-        Qualitative results of the Actionability Prediction networks A1 and A2. In each block, from left to right, we respectively show the task represented by a red arrow, the object which needs to be moved from transparent to solid, the actionability heatmap predicted by network A1, and the actionability heatmap predicted by network A2 conditioned on the action of the first gripper. Shapes on the left are from training categories, while those on the right are from novel unseen categories.
+        Qualitative results of Affordance Networks. In each block, we respectively show 
+        (1) task represented by a red arrow, 
+        (2) object which should be moved from transparent to solid, 
+        (3) the first affordance map predicted by A1, 
+        (4) the second affordance map predicted by A2 conditioned on the first action. 
+        Left shapes are from training categories, while right shapes are from unseen categories.
+
   </p></td></tr></tbody></table>
   <img class="bannerImage" src="./images/critic.png" ,="" width="800"><br>
   <table width="800" align="center"><tbody><tr><td><p class="figureTitleText">
         Figure 5.
-        The per-point action scores predicted by our Action Scoring networks C1 and C2. In each result block, from left to right, we show the task, the input shape, the per-point success likelihood predicted by C1 given the first gripper orientation, and the per-point success likelihood predicted by C2 given the second gripper orientation, conditioned on the first gripper's action.
+        The per-point action scores predicted by Critic Networks C1 and C2.
+        In each result block, from left to right, we show the task, the input shape, 
+        the per-point success likelihood predicted by C1 given the first gripper orientation, 
+        and the per-point success likelihood predicted by C2 given the second gripper orientation, conditioned on the first gripper’s action.
+
   </p></td></tr></tbody></table>
   <img class="bannerImage" src="./images/ablation.png" ,="" width="800"><br>
   <table width="800" align="center"><tbody><tr><td><p class="figureTitleText">
         Figure 6.
-        (a) The diverse and collaborative actions proposed by the Action Proposal networks P1 and P2. (b) The promising results testing on real-world data. (c) The actionable affordance maps of the ablated version that removes the Collaborative Adaptation procedure (left) and ours (right).
+        (a) The diverse and collaborative actions proposed by the Proposal Networks P1 and P2. 
+        (b) The promising results testing on real-world data. 
+        (c) The actionable affordance maps of the ablated version that removes the Collaborative Adaptation procedure (left) and ours (right).
   </p></td></tr></tbody></table>
   <img class="bannerImage" src="./images/real.png" ,="" width="800"><br>
   <table width="800" align="center"><tbody><tr><td><p class="figureTitleText">
         Figure 7.
-        We present some promising results by directly testing our model on real-world scans. In each block, from left to right, we respectively show the task represented by a red arrow, the input shape, the actionability heatmap predicted by network A1, and the actionability heatmap predicted by network A2 conditioned on the action of the first gripper. Please check our video for more results.
+        We present some promising results by directly testing our model on real-world scans. 
+        In each block, from left to right, we respectively show the task represented by a red arrow, the input shape, 
+        the actionability heatmap predicted by network A1, 
+        and the actionability heatmap predicted by network A2 conditioned on the action of the first gripper. 
+        Please check our video for more results.
   </p></td></tr></tbody></table>
 
 
